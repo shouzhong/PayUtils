@@ -2,7 +2,7 @@ package com.shouzhong.pay;
 
 public interface Callback {
 
-    void success();
+    void success(String data);
 
     void failure(String errorCode, String errorMessage);
 

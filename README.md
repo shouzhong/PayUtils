@@ -4,7 +4,7 @@
 ## 使用
 ### 依赖
 ```
-implementation 'com.shouzhong:PayUtils:1.0.0'
+implementation 'com.shouzhong:PayUtils:1.0.2'
 ```
 ### 代码
 微信支付，以下参数最好后端生成，这里不提供前端生成的方法，在前端生成不安全
@@ -18,8 +18,8 @@ PayUtils.wx().with(Context)
         .setSign()// 签名
         .setCallback(new Callback() {
             @Override
-            public void success() {
-                // 支付成功
+            public void success(String data) {
+                // 支付成功，data为空
             }
 
             @Override
@@ -41,8 +41,8 @@ PayUtils.ali().with(Activity)
         .setShowLoading()// 是否展示自带ProgressDialog
         .setCallback(new Callback() {
             @Override
-            public void success() {
-                // 支付成功
+            public void success(String data) {
+                // 支付成功，data为空
             }
 
             @Override
@@ -57,6 +57,28 @@ PayUtils.ali().with(Activity)
         })
         .start();
 ```
+微信登录
+```
+LoginUtils.wx().with(context)
+        .setAppId()// appId
+        .setCallback(new Callback() {
+                    @Override
+                    public void success(String data) {
+                        // 登录成功，data为code，把code给后台去获取用户信息等
+                    }
+
+                    @Override
+                    public void failure(String errorCode, String errorMessage) {
+                        //  登录失败
+                    }
+
+                    @Override
+                    public void cancel() {
+                        // 用户取消
+                    }
+                })
+                .start();
+```
 ## 混淆
 ```
 # 支付宝支付
@@ -66,7 +88,6 @@ PayUtils.ali().with(Activity)
 -keep class com.ta.utdid2.** {*;}
 -dontwarn  com.ut.device.**
 -keep class com.ut.device.** {*;}
-
 # 微信支付
 -keep class com.tencent.mm..opensdk.** {*;}
 -dontwarn com.tencent.mm.opensdk.**

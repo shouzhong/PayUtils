@@ -132,7 +132,7 @@ public class WxPay {
             int code = intent.getIntExtra("code", -2);
             switch (code) {
                 case 0:
-                    callback.success();
+                    callback.success(null);
                     break;
                 case -1:
                     callback.failure(intent.getStringExtra("error_code"), intent.getStringExtra("error_message"));

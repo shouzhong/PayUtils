@@ -77,7 +77,7 @@ public class AliPay {
             protected void onPostExecute(Map<String, String> map) {
                 String code = map.get("resultStatus");
                 if (TextUtils.equals(code, "9000")) {
-                    callback.success();
+                    callback.success(null);
                 } else if (TextUtils.equals(code, "6001")) {
                     callback.cancel();
                 } else {
