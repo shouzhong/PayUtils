@@ -4,7 +4,7 @@
 ## 使用
 ### 依赖
 ```
-implementation 'com.shouzhong:PayUtils:1.0.2'
+implementation 'com.shouzhong:PayUtils:1.0.3'
 ```
 ### 代码
 微信支付，以下参数最好后端生成，这里不提供前端生成的方法，在前端生成不安全
@@ -62,22 +62,22 @@ PayUtils.ali().with(Activity)
 LoginUtils.wx().with(context)
         .setAppId()// appId
         .setCallback(new Callback() {
-                    @Override
-                    public void success(String data) {
-                        // 登录成功，data为code，把code给后台去获取用户信息等
-                    }
+            @Override
+            public void success(String data) {
+                // 登录成功，data为code，把code给后台去获取用户信息等
+            }
 
-                    @Override
-                    public void failure(String errorCode, String errorMessage) {
-                        //  登录失败
-                    }
+            @Override
+            public void failure(String errorCode, String errorMessage) {
+                //  登录失败
+            }
 
-                    @Override
-                    public void cancel() {
-                        // 用户取消
-                    }
-                })
-                .start();
+            @Override
+            public void cancel() {
+                // 用户取消
+            }
+        })
+        .start();
 ```
 ## 混淆
 ```
